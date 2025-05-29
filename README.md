@@ -1,13 +1,14 @@
 # Task Manager
 
-A modern, dark-themed task management application built with React, TypeScript, Tailwind CSS, and Supabase.
+A modern task management application built with React, TypeScript, Tailwind CSS, and Supabase.
 
+**Deployed link** : https://waytodolist.netlify.app/
 ## Features
 
 - Social authentication with Google and GitHub
 - Add, edit, delete, and filter tasks
 - Set due dates for tasks
-- Responsive, beautiful dark UI with purple accents
+- Responsive
 - Secure data handling with Supabase
 
 ## Tech Stack
@@ -15,7 +16,6 @@ A modern, dark-themed task management application built with React, TypeScript, 
 - React + TypeScript
 - Tailwind CSS
 - Supabase (Database & Auth)
-- Lucide React (icons)
 
 ## Getting Started
 
@@ -76,6 +76,4 @@ yarn build
 
 Deploy the `dist` directory to your preferred hosting service.
 
-## License
-
-MIT
+This project is a part of a hackathon run by https://www.katomaran.com
