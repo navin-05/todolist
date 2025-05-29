@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { AuthProviderType } from '../types';
-import { LogIn, AlertCircle, Github, Facebook, Mail } from 'lucide-react';
+import { LogIn, AlertCircle, Github, Mail } from 'lucide-react';
 import Popup from '../components/Popup';
 import { supabase } from '../lib/supabase';
 
@@ -107,28 +107,28 @@ const Login = () => {
           </button>
         </div>
       </Popup>
-      <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-gray-900 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <div className="flex justify-center">
-            <div className="h-12 w-12 rounded-full bg-indigo-600 flex items-center justify-center">
+            <div className="h-12 w-12 rounded-full bg-purple-600 flex items-center justify-center">
               <LogIn className="h-6 w-6 text-white" />
             </div>
           </div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Sign in to TaskMaster
+          <h2 className="mt-6 text-center text-3xl font-extrabold text-white">
+            Sign in to Task Manager
           </h2>
-          <p className="mt-2 text-center text-sm text-gray-600">
+          <p className="mt-2 text-center text-sm text-gray-300">
             Manage your tasks efficiently and stay organized
           </p>
         </div>
 
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-          <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+          <div className="bg-gray-800 py-8 px-4 shadow sm:rounded-lg sm:px-10 border border-purple-500">
             {error && (
-              <div className="mb-4 p-4 bg-red-50 rounded-md border border-red-200">
+              <div className="mb-4 p-4 bg-red-900 rounded-md border border-red-700">
                 <div className="flex">
-                  <AlertCircle className="h-5 w-5 text-red-500 mr-2" />
-                  <p className="text-sm text-red-600">{error}</p>
+                  <AlertCircle className="h-5 w-5 text-red-400 mr-2" />
+                  <p className="text-sm text-red-300">{error}</p>
                 </div>
               </div>
             )}
@@ -233,18 +233,10 @@ const Login = () => {
                     <Github className="h-5 w-5 mr-2" />
                     Sign in with GitHub
                   </button>
-                  <button
-                    onClick={() => handleSignIn('facebook')}
-                    disabled={loading}
-                    className="w-full flex items-center justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  >
-                    <Facebook className="h-5 w-5 mr-2" />
-                    Sign in with Facebook
-                  </button>
                 </div>
                 <div className="my-6 flex items-center">
                   <div className="flex-grow border-t border-gray-300"></div>
-                  <span className="mx-4 text-gray-500 text-sm bg-white px-2">
+                  <span className="mx-4 text-white text-sm font-bold">
                     {loading ? 'Loading...' : 'Or'}
                   </span>
                   <div className="flex-grow border-t border-gray-300"></div>

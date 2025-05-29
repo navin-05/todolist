@@ -1,23 +1,21 @@
-# TaskMaster - Todo Task Management Application
+# Task Manager
 
-A modern, responsive task management application built with React, TypeScript, and Supabase.
+A modern, dark-themed task management application built with React, TypeScript, Tailwind CSS, and Supabase.
 
 ## Features
 
-- Social authentication with Google, GitHub, and Facebook
-- Complete CRUD operations for tasks
-- Real-time updates
-- Responsive design for all devices
-- Task filtering and organization
-- Secure data handling with Row Level Security
+- Social authentication with Google and GitHub
+- Add, edit, delete, and filter tasks
+- Set due dates for tasks
+- Responsive, beautiful dark UI with purple accents
+- Secure data handling with Supabase
 
-## Technologies Used
+## Tech Stack
 
-- React with TypeScript
-- Tailwind CSS for styling
-- Supabase for backend and authentication
-- React Router for navigation
-- Lucide React for icons
+- React + TypeScript
+- Tailwind CSS
+- Supabase (Database & Auth)
+- Lucide React (icons)
 
 ## Getting Started
 
@@ -29,44 +27,55 @@ A modern, responsive task management application built with React, TypeScript, a
 
 ### Installation
 
-1. Clone the repository
+1. Clone the repository:
+   ```bash
+   git clone <your-repo-url>
+   cd <your-repo-directory>
+   ```
 2. Install dependencies:
    ```bash
    npm install
+   # or
+   yarn install
    ```
 3. Create a `.env` file based on `.env.example` and add your Supabase credentials:
-   ```
+   ```env
    VITE_SUPABASE_URL=your-supabase-url
    VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
    ```
 4. Start the development server:
    ```bash
    npm run dev
+   # or
+   yarn dev
    ```
 
 ### Supabase Setup
 
-1. Create a new Supabase project
-2. Set up authentication providers:
-   - Enable Google, GitHub, and Facebook auth in the Supabase dashboard
-3. Run the migration script from `supabase/migrations/create_tasks_table.sql` to create the tasks table and set up RLS policies
-
-## Project Structure
-
-- `src/components`: React components
-- `src/context`: Context providers
-- `src/hooks`: Custom hooks
-- `src/lib`: Utility functions and configurations
-- `src/pages`: Page components
-- `src/services`: API and service functions
-- `src/types`: TypeScript type definitions
+1. Create a new Supabase project.
+2. In the Table Editor, create a `tasks` table with these columns:
+   - `id` (uuid, primary key)
+   - `title` (text)
+   - `description` (text)
+   - `status` (text)
+   - `created_at` (timestamp, default: now())
+   - `user_id` (uuid or text)
+   - `due_date` (date, nullable)
+3. Enable Google and GitHub authentication in the Supabase dashboard.
+4. Set up Row Level Security (RLS) as needed.
 
 ## Deployment
 
-Build the application for production:
+To build for production:
 
 ```bash
 npm run build
+# or
+yarn build
 ```
 
-Then deploy the `dist` directory to your preferred hosting service.
+Deploy the `dist` directory to your preferred hosting service.
+
+## License
+
+MIT

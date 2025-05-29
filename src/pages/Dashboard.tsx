@@ -47,7 +47,7 @@ const Dashboard: React.FC = () => {
     }
   };
 
-  const addTask = async (title: string, description: string) => {
+  const addTask = async (title: string, description: string, due_date?: string) => {
     try {
       if (!user) {
         setError('User not authenticated');
@@ -59,6 +59,7 @@ const Dashboard: React.FC = () => {
         description,
         status: 'pending' as const,
         user_id: user.id,
+        due_date,
       };
 
       const { data, error: insertError } = await supabase
@@ -86,6 +87,7 @@ const Dashboard: React.FC = () => {
           title: updatedTask.title,
           description: updatedTask.description,
           status: updatedTask.status,
+          due_date: updatedTask.due_date,
         })
         .eq('id', updatedTask.id)
         .eq('user_id', user?.id);
@@ -127,17 +129,17 @@ const Dashboard: React.FC = () => {
     : tasks.filter(task => task.status === statusFilter);
 
   return (
-    <div>
+    <div className="bg-gray-900 min-h-screen text-white">
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">My Tasks</h1>
-        <p className="text-gray-600">Manage your tasks and stay organized.</p>
+        <h1 className="text-2xl font-bold text-white">My Tasks</h1>
+        <p className="text-gray-300">Manage your tasks and stay organized.</p>
       </div>
 
       {error && (
-        <div className="mb-4 p-4 bg-red-50 rounded-md border border-red-200">
+        <div className="mb-4 p-4 bg-gray-800 rounded-md border border-purple-500">
           <div className="flex">
-            <AlertCircle className="h-5 w-5 text-red-500 mr-2" />
-            <p className="text-sm text-red-600">{error}</p>
+            <AlertCircle className="h-5 w-5 text-purple-400 mr-2" />
+            <p className="text-sm text-purple-300">{error}</p>
           </div>
         </div>
       )}
@@ -145,15 +147,15 @@ const Dashboard: React.FC = () => {
       <NewTaskForm onAddTask={addTask} />
 
       <div className="mb-6 flex justify-between items-center">
-        <div className="text-sm font-medium text-gray-700">
+        <div className="text-sm font-medium text-purple-300">
           {filteredTasks.length} {filteredTasks.length === 1 ? 'task' : 'tasks'} {statusFilter !== 'all' && `(${statusFilter})`}
         </div>
         <div className="flex items-center">
-          <ListFilter className="h-4 w-4 mr-2 text-gray-500" />
+          <ListFilter className="h-4 w-4 mr-2 text-purple-400" />
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="text-sm border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="text-sm border-purple-500 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 bg-gray-800 text-white"
           >
             <option value="all">All Tasks</option>
             <option value="pending">Pending</option>

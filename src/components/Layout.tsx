@@ -13,13 +13,13 @@ const Layout: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
-      <header className="bg-white shadow-sm">
+    <div className="min-h-screen bg-gray-900 text-white flex flex-col">
+      <header className="bg-black shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
             <div className="flex items-center">
-              <CheckSquare className="h-8 w-8 text-indigo-600" />
-              <span className="ml-2 text-xl font-bold text-gray-900">TaskMaster</span>
+              <CheckSquare className="h-8 w-8 text-purple-500" />
+              <span className="ml-2 text-xl font-bold text-white">TaskMaster</span>
             </div>
             {user && (
               <div className="flex items-center space-x-4">
@@ -28,16 +28,16 @@ const Layout: React.FC = () => {
                     <img
                       src={user.user_metadata.avatar_url}
                       alt="Profile"
-                      className="h-8 w-8 rounded-full object-cover"
+                      className="h-8 w-8 rounded-full object-cover border-2 border-purple-500"
                     />
                   )}
-                  <span className="ml-2 text-sm font-medium text-gray-700">
+                  <span className="ml-2 text-sm font-medium text-gray-200">
                     {user.user_metadata?.name || user.user_metadata?.full_name || user.email}
                   </span>
                 </div>
                 <button
                   onClick={handleSignOut}
-                  className="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  className="inline-flex items-center px-3 py-1.5 border border-purple-500 text-sm font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
                 >
                   <LogOut className="h-4 w-4 mr-1" />
                   Sign Out
@@ -47,18 +47,11 @@ const Layout: React.FC = () => {
           </div>
         </div>
       </header>
-      <main className="flex-grow">
+      <main className="flex-grow bg-gray-900">
         <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
           <Outlet />
         </div>
       </main>
-      <footer className="bg-white shadow-inner py-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-sm text-gray-500">
-            Designed and Developed by <span className="text-indigo-600 font-semibold">Navi</span>
-          </p>
-        </div>
-      </footer>
     </div>
   );
 };

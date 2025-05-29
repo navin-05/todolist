@@ -17,6 +17,7 @@ export interface Task {
   status: 'pending' | 'in-progress' | 'completed';
   created_at: string;
   user_id: string;
+  due_date?: string;
 }
 
-export type AuthProviderType = 'google' | 'github' | 'facebook';
+export type AuthProviderType = 'google' | 'github';
